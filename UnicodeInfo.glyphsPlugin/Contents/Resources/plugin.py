@@ -359,7 +359,10 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
     @objc.python_method
     def get_missing_glyphs_for_block(self, block, font) -> list[str]:
         glyph_list = self.get_block_glyph_list(block, font, False, False)
-        existing = set(self.font.glyphs.keys())
+        if font is None:
+            return []
+
+        existing = set(font.glyphs.keys())
         return [n for n in glyph_list if n not in existing]
 
     @objc.python_method
