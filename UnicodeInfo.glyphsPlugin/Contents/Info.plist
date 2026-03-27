@@ -13,9 +13,9 @@
 		<key>CFBundleName</key>
 		<string>UnicodeInfo</string>
 		<key>CFBundleShortVersionString</key>
-		<string>1.2.1</string>
+		<string>1.2.2</string>
 		<key>CFBundleVersion</key>
-		<string>10</string>
+		<string>122</string>
 		<key>UpdateFeedURL</key>
 		<string>
 			https://raw.githubusercontent.com/jenskutilek/UnicodeInfo-Glyphs/master/UnicodeInfo.glyphsPalette/Contents/Info.plist</string>
@@ -24,7 +24,7 @@
 		<key>productReleaseNotes</key>
 		<string>New data source Hyperglot, more options in UI</string>
 		<key>NSHumanReadableCopyright</key>
-		<string>Copyright, Jens Kutilek, 2016-2025</string>
+		<string>Copyright, Jens Kutilek, 2016-2026</string>
 		<key>NSPrincipalClass</key>
 		<string>UnicodeInfo</string>
 		<key>PyMainFileNames</key>
