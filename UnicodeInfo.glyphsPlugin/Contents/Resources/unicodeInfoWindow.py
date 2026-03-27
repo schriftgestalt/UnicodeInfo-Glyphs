@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import objc
 from AppKit import NSClassFromString, NSImage
 from Foundation import NSBundle

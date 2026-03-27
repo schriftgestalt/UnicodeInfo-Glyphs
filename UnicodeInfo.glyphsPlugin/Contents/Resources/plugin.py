@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import urllib.parse
 import webbrowser
 from typing import TYPE_CHECKING
@@ -114,7 +112,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
         self.filtered = False
         self.in_font_view = False
         self.info = UniInfo(0)
-        self.unicode: int | None = None
+        self.unicode: "int | None" = None
         self.ortho_cdlr = OrthographyInfo(ui=self.info, source="CLDR")
         self.ortho_hyperglot = OrthographyInfo(ui=self.info, source="Hyperglot")
         self.ortho = self.ortho_hyperglot
@@ -241,7 +239,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
             self.font = self.glyph_font
 
     @property
-    def glyph_font(self) -> GSFont | None:
+    def glyph_font(self) -> "GSFont | None":
         """
         Return the current glyph's font.
         """
@@ -251,7 +249,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
         return self._glyph.parent
 
     @property
-    def glyph_unicode(self) -> int | None:
+    def glyph_unicode(self) -> "int | None":
         """
         Return the current glyph's Unicode value as int or None.
         """
@@ -298,7 +296,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
     @objc.python_method
     def get_orthography_glyph_list(self, orthography, font, markers=True) -> list[str]:
         if markers:
-            glyph_list: list[str | None] = [f"** {orthography.name} **"]
+            glyph_list: "list[str | None]" = [f"** {orthography.name} **"]
         else:
             glyph_list = []
 
@@ -333,7 +331,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
         return [n for n in glyph_list if n is not None]
 
     @objc.python_method
-    def get_glyphname_for_unicode(self, value: int | None = None) -> str | None:
+    def get_glyphname_for_unicode(self, value: "int | None" = None) -> "str | None":
         if value is None:
             return None
 
@@ -386,7 +384,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
         return [n for n in glyph_list if n is not None]
 
     @objc.python_method
-    def get_unicode_for_glyphname(self, name=None) -> int | None:
+    def get_unicode_for_glyphname(self, name=None) -> "int | None":
         if name is None:
             return None
 
@@ -438,8 +436,8 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
 
     @objc.python_method
     def get_extra_names(
-        self, font, uni_name_tuples: list[tuple[int | None, str]]
-    ) -> list[tuple[int | None, str]]:
+        self, font, uni_name_tuples: "list[tuple[int | None, str]]"
+    ) -> "list[tuple[int | None, str]]":
         ext_map = self.get_extension_map(font)
         additions = []
         for u, n in uni_name_tuples:
