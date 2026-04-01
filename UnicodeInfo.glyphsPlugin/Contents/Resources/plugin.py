@@ -4,7 +4,7 @@ from typing import TYPE_CHECKING
 
 import objc
 from AppKit import NSMenuItem
-from GlyphsApp import UPDATEINTERFACE, WINDOW_MENU, Glyphs, GSGlyph
+from GlyphsApp import UPDATEINTERFACE, WINDOW_MENU, Glyphs, GSGlyph, GSFont
 from GlyphsApp.plugins import GeneralPlugin
 from unicodeInfoWindow import UnicodeInfoWindow
 
@@ -40,7 +40,6 @@ def showMissingModule():
 
 
 if TYPE_CHECKING:
-    from GlyphsApp import GSFont, GSGlyph
     from jkUnicode.orthography import Orthography
 
 
@@ -239,7 +238,7 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
             self.font = self.glyph_font
 
     @property
-    def glyph_font(self) -> "GSFont | None":
+    def glyph_font(self) -> GSFont | None:
         """
         Return the current glyph's font.
         """
@@ -518,8 +517,8 @@ class UnicodeInfo(GeneralPlugin, UnicodeInfoWindow):
     @objc.python_method
     def reassignUnicodes(self, sender=None) -> None:
         if self.font is not None:
-            unicodes = {g.unicode: g.name for g in self.font if g.unicode}
-            for g in self.font:
+            unicodes = {g.unicode: g.name for g in self.font.glyphs if g.unicode}
+            for g in self.font.glyphs:
                 myUnicode = self.get_unicode_for_glyphname(g.name)
                 if g.unicode != myUnicode:
                     print("%s:" % g.name, end="")
